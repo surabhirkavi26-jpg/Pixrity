@@ -1,0 +1,998 @@
+/*
+ * JewellerySolutionsPage.mobile.css
+ *
+ * Mobile-first responsive overrides for JewellerySolutionsPage.
+ * Import AFTER JewellerySolutionsPage.css:
+ *   import '../styles/HomePage.css';
+ *   import '../styles/JewellerySolutionsPage.css';
+ *   import '../styles/JewellerySolutionsPage.mobile.css';
+ *
+ * Breakpoints used:
+ *   ≤480px  — small phones (base mobile)
+ *   ≤640px  — standard phones
+ *   ≤768px  — large phones / small tablets
+ */
+
+/* ─────────────────────────────────────────────
+   GLOBAL MOBILE RESETS
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Tighter section shells */
+  .j-section {
+    padding: 56px 20px;
+    min-height: unset;
+    align-items: flex-start;
+  }
+
+  /* section-inner should never overflow */
+  .section-inner {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Headline sizing */
+  .section-headline {
+    font-size: clamp(1.5rem, 5.5vw, 2rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .section-intro {
+    font-size: 0.88rem !important;
+    line-height: 1.65 !important;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   NAV — mobile app-style
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  nav {
+    padding: 0 16px;
+    height: 56px;
+  }
+
+  /* Slide-in menu becomes full-screen overlay */
+  nav #menu {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    background: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 72px 28px 40px;
+    gap: 8px;
+    z-index: 9999;
+    transform: translateX(100%);
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+  }
+
+  nav #menu.open {
+    transform: translateX(0);
+  }
+
+  nav #menu a,
+  nav #menu .dropdown > span {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #050040;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(5, 0, 64, 0.07);
+    width: 100%;
+    display: block;
+  }
+
+  nav #menu a:last-of-type {
+    border-bottom: none;
+  }
+
+  nav .close-btn {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(5, 0, 64, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Logo watermark — smaller on mobile */
+  .logo-watermark {
+    left: 16px;
+    top: 10px;
+  }
+
+  .logo-text {
+    font-size: 1rem;
+  }
+
+  /* Nav right — compact */
+  .nav-right {
+    gap: 8px;
+  }
+
+  .contact-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  /* Dropdown becomes vertical list */
+  .cmd-dropdown {
+    position: static;
+  }
+
+  .cmd-panel {
+    position: static;
+    transform: none;
+    left: unset;
+    top: unset;
+    margin-top: 8px;
+    width: 100%;
+    box-shadow: none;
+    border: 1px solid rgba(5, 0, 64, 0.08);
+    animation: none;
+  }
+
+  .cmd-panel::before {
+    display: none;
+  }
+
+  .cmd-item {
+    font-size: 14px;
+    padding: 12px 16px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   01 HERO — full-screen app feel
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .j-hero-section {
+    min-height: 100dvh;
+    padding-top: 56px; /* nav height */
+    align-items: center;
+  }
+
+  .j-hero-body {
+    padding: 40px 20px 80px;
+    text-align: center;
+  }
+
+  .j-hero-headline {
+    font-size: clamp(2rem, 8vw, 2.8rem) !important;
+    letter-spacing: -0.025em;
+    margin-bottom: 16px;
+  }
+
+  .j-hero-sub {
+    font-size: 0.93rem;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    padding: 0 4px;
+  }
+
+  .j-hero-cta-row {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .j-hero-cta-row .btn-primary,
+  .j-hero-cta-row .contact-btn,
+  .j-hero-cta-row .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.93rem;
+    padding: 14px 20px;
+    border-radius: 12px;
+  }
+
+  .j-hero-eyebrow {
+    font-size: 10px;
+    padding: 6px 14px;
+    margin-bottom: 20px;
+  }
+
+  .j-hero-scroll-hint {
+    margin-top: 40px;
+    font-size: 10px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   VIDEO SHOWCASE — stacked layout
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .j-video-section {
+    padding: 48px 20px;
+    min-height: unset;
+  }
+
+  .j-video-split {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .j-video-left .section-headline {
+    font-size: clamp(1.4rem, 5vw, 1.9rem) !important;
+    margin-bottom: 10px;
+  }
+
+  .j-video-left .section-intro {
+    font-size: 0.87rem !important;
+    margin-bottom: 20px;
+  }
+
+  .j-video-stats-col {
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .j-video-stat-row {
+    padding: 12px 14px;
+    border-radius: 10px;
+    gap: 12px;
+  }
+
+  .j-video-stat-num {
+    font-size: 1.3rem;
+    min-width: 42px;
+  }
+
+  .j-infinity-fix {
+    font-size: 1.8rem;
+  }
+
+  .j-video-stat-label {
+    font-size: 12px;
+  }
+
+  .j-video-cta-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .j-video-cta-row button {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 18px;
+    font-size: 0.9rem;
+  }
+
+  .j-video-glow-wrap {
+    border-radius: 16px;
+  }
+
+  .j-video-frame {
+    border-radius: 14px;
+  }
+
+  .j-video-frame video {
+    max-height: 52vw;
+    border-radius: 14px;
+  }
+
+  .j-play-btn {
+    width: 56px;
+    height: 56px;
+  }
+
+  .j-play-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .j-play-ring {
+    width: 76px;
+    height: 76px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   02 PROBLEM — single column cards
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .j-problem-section {
+    padding: 56px 20px;
+  }
+
+  .j-problem-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 32px;
+  }
+
+  .j-problem-card {
+    padding: 22px 18px;
+    border-radius: 14px;
+    gap: 8px;
+  }
+
+  .j-problem-title {
+    font-size: 14px;
+  }
+
+  .j-problem-preview {
+    font-size: 12.5px;
+  }
+
+  .j-problem-desc {
+    font-size: 13px;
+  }
+
+  .j-problem-card--expanded .j-problem-expandable {
+    max-height: 300px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   03 PLATFORM — full-width cards, stacked
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .j-platform-section {
+    padding: 56px 20px;
+  }
+
+  .j-platform-anchors {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .j-anchor-card--img {
+    border-radius: 16px;
+  }
+
+  .j-anchor-img-wrap {
+    height: 180px;
+  }
+
+  .j-anchor-card-body {
+    padding: 16px 18px 18px;
+  }
+
+  .j-anchor-card--img .j-anchor-title {
+    font-size: 14px;
+  }
+
+  .j-anchor-desc {
+    font-size: 12px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   04 & 05 SOLUTIONS — stacked video + content
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .j-sol-section {
+    padding: 56px 20px;
+  }
+
+  .j-sol-video-layout,
+  .j-sol-video-layout--reverse {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* Always show video first on mobile */
+  .j-sol-video-layout--reverse .j-sol-content-col {
+    order: 2;
+  }
+  .j-sol-video-layout--reverse .j-sol-video-col {
+    order: 1;
+  }
+
+  .j-sol-video-col {
+    position: static; /* Remove sticky on mobile */
+  }
+
+  .j-sol-video-wrap {
+    border-radius: 16px;
+  }
+
+  .j-sol-video {
+    max-height: 52vw;
+    border-radius: 14px;
+  }
+
+  .j-sol-badge {
+    font-size: 10px;
+    padding: 3px 10px;
+    margin-bottom: 14px;
+  }
+
+  /* Info cards */
+  .j-sol-info-cards {
+    gap: 12px;
+  }
+
+  .j-sol-info-card {
+    border-radius: 14px;
+  }
+
+  .j-sol-info-card-header {
+    padding: 16px 16px;
+    gap: 10px;
+  }
+
+  .j-sol-info-card-title {
+    font-size: 13.5px;
+  }
+
+  .j-sol-info-card-preview {
+    padding: 0 16px 14px;
+    gap: 5px;
+  }
+
+  .j-sol-info-card-preview-pill {
+    font-size: 10.5px;
+    padding: 3px 8px;
+    max-width: 160px;
+  }
+
+  .j-sol-info-card-body {
+    padding: 0 16px;
+  }
+
+  .j-sol-info-card--expanded .j-sol-info-card-body {
+    padding: 4px 16px 16px;
+  }
+
+  .j-sol-info-list li {
+    font-size: 13px !important;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   06 FEATURES / CAPABILITIES — mobile tabs
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .j-features-section {
+    padding: 56px 20px !important;
+    overflow: hidden;
+  }
+
+  .j-cap-layout {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+    margin-top: 24px;
+    overflow: visible;
+  }
+
+  /* Tabs become horizontal scrollable pill row */
+  .j-cap-tabs {
+    flex-direction: row;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-radius: 14px;
+    gap: 0;
+    border: none;
+    background: transparent;
+    padding-bottom: 4px;
+  }
+
+  .j-cap-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .j-cap-tab {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-shrink: 0;
+    min-width: 110px;
+    padding: 14px 14px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-right: 8px;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .j-cap-tab:last-child {
+    margin-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .j-cap-tab::before {
+    display: none;
+  }
+
+  .j-cap-tab.active {
+    background: rgba(212, 168, 71, 0.08);
+    border-color: rgba(212, 168, 71, 0.5);
+  }
+
+  .j-cap-tab-icon {
+    font-size: 1.3rem;
+  }
+
+  .j-cap-tab-text {
+    align-items: center;
+    gap: 2px;
+  }
+
+  .j-cap-tab-title {
+    font-size: 12px !important;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .j-cap-tab-sub {
+    display: none; /* Hide subtitle on small screens */
+  }
+
+  .j-cap-tab-arrow {
+    display: none;
+  }
+
+  /* Detail panel */
+  .j-cap-detail {
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .j-cap-video-wrap {
+    height: 200px !important;
+  }
+
+  .j-cap-info {
+    padding: 18px 18px !important;
+  }
+
+  .j-cap-info-title {
+    font-size: 1rem !important;
+    margin-bottom: 2px;
+  }
+
+  .j-cap-info-subtitle {
+    font-size: 0.82rem !important;
+    margin-bottom: 8px;
+  }
+
+  .j-cap-info-desc {
+    font-size: 0.82rem !important;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  /* Bullet points — single column on mobile */
+  .j-feat-points {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .j-feat-points li {
+    font-size: 13px !important;
+    line-height: 1.5;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   07 SOLUTION 03 — ads section
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .j-adv-section {
+    padding: 56px 20px;
+  }
+
+  /* Tab bar — scrollable if needed */
+  .j-sol3-tab-bar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-top: 28px;
+    margin-bottom: 28px;
+    gap: 0;
+  }
+
+  .j-sol3-tab-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .j-sol3-tab {
+    padding: 10px 20px 12px;
+    font-size: 13px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Phone + outcomes — stacked */
+  .j-sol3-content-row {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .j-sol3-phone-col {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Slightly bigger phone on mobile */
+  .j-sol3-phone-col .ia-phone-shell {
+    width: 190px !important;
+    border-radius: 32px;
+    padding: 14px 9px 17px;
+  }
+
+  .j-sol3-phone-col .ia-phone-notch {
+    width: 60px !important;
+    height: 9px !important;
+  }
+
+  .j-sol3-outcomes-col {
+    padding: 0;
+  }
+
+  .j-sol3-outcomes-title {
+    font-size: 0.97rem;
+    margin-bottom: 6px;
+  }
+
+  .j-sol3-outcomes-desc {
+    font-size: 12.5px;
+    margin-bottom: 14px;
+  }
+
+  .j-sol3-outcomes-list {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .j-sol3-outcome-item {
+    font-size: 12.5px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    gap: 8px;
+  }
+
+  .j-sol3-cta-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .j-sol3-cta-row button {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 18px;
+    font-size: 0.88rem;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   08 BENEFITS — single column
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .j-benefits-section {
+    padding: 56px 20px;
+  }
+
+  .j-benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .j-benefit-card {
+    padding: 24px 20px;
+    border-radius: 14px;
+    gap: 10px;
+  }
+
+  .j-benefit-title {
+    font-size: 16px;
+  }
+
+  .j-benefit-sub {
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+
+  .j-benefit-card .j-sol-list li {
+    font-size: 13px;
+    gap: 8px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   09 WHY PIXRITY — 2-col grid on mobile
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .j-why-section {
+    padding: 56px 20px;
+  }
+
+  .j-why-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .j-why-item {
+    padding: 20px 16px 18px;
+    border-radius: 14px;
+    gap: 6px;
+  }
+
+  .j-why-icon {
+    font-size: 1.3rem;
+  }
+
+  .j-why-text {
+    font-size: 12.5px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .j-why-sub {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .j-why-num-bg {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .j-why-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   10 CTA + FORM — stacked, full-width
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .j-cta-section {
+    padding: 56px 20px;
+  }
+
+  .j-cta-split {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .j-cta-headline {
+    font-size: clamp(1.4rem, 5.5vw, 1.9rem) !important;
+    margin-bottom: 14px;
+    margin-top: 10px;
+  }
+
+  .j-cta-sub {
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+
+  .j-cta-list {
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+
+  .j-cta-list li {
+    font-size: 0.9rem;
+    gap: 8px;
+  }
+
+  .j-cta-left .contact-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+  }
+
+  /* Form card */
+  .j-contact-form-wrap {
+    padding: 28px 22px;
+    border-radius: 18px;
+  }
+
+  .j-form-title {
+    font-size: 1.1rem;
+    margin-bottom: 3px;
+  }
+
+  .j-form-sub {
+    font-size: 0.83rem;
+    margin-bottom: 20px;
+  }
+
+  .j-form {
+    gap: 14px;
+  }
+
+  .j-field label {
+    font-size: 0.8rem;
+  }
+
+  .j-field input,
+  .j-field select {
+    font-size: 16px; /* Prevents iOS auto-zoom on focus */
+    padding: 12px 14px;
+    border-radius: 10px;
+  }
+
+  .j-submit-btn {
+    padding: 14px 20px;
+    font-size: 0.95rem;
+    border-radius: 12px;
+  }
+
+  .j-form-success {
+    padding: 32px 16px;
+  }
+
+  .j-success-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   FOOTER — mobile layout
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .footer {
+    padding: 48px 20px 32px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .footer-brand {
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-size: 1.3rem;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 16px;
+  }
+
+  .footer-col {
+    gap: 8px;
+  }
+
+  .footer-col-label {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+
+  .footer-col a {
+    font-size: 13px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    padding-top: 20px;
+    font-size: 11px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   SECTION LABEL — slightly smaller on mobile
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .section-label {
+    font-size: 10px;
+    padding: 4px 13px;
+    margin-bottom: 14px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   BUTTONS — full touch targets
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .btn-primary,
+  .btn-secondary,
+  .contact-btn {
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   SCROLL SNAP — disable on mobile for native feel
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .j-hero-section,
+  .j-video-section,
+  .j-problem-section,
+  .j-platform-section,
+  .j-sol-section,
+  .j-features-section,
+  .j-benefits-section,
+  .j-why-section,
+  .j-cta-section {
+    scroll-snap-align: none;
+    scroll-snap-stop: unset;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   GRADIENT TEXT — ensure crisp on mobile
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .j-grad-text,
+  .j-grad-text-cool,
+  .j-grad-text-warm,
+  .j-grad-shimmer,
+  .j-headline-accent {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   TINY PHONE EXTRAS (≤ 380px)
+───────────────────────────────────────────── */
+@media (max-width: 380px) {
+  .j-hero-headline {
+    font-size: 1.85rem !important;
+  }
+
+  .j-section,
+  .j-video-section,
+  .j-features-section,
+  .j-cta-section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .j-why-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .j-video-stat-num {
+    font-size: 1.15rem;
+    min-width: 36px;
+  }
+
+  .j-contact-form-wrap {
+    padding: 22px 16px;
+  }
+}
